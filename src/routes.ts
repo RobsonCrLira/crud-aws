@@ -1,7 +1,7 @@
-import { Router } from "express";
+import { Router } from 'express';
 
 const routes = Router();
 
-routes.get("/", () => console.log("teste"));
+routes.get('/', () => console.log('teste'));
 
 export { routes };

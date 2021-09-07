@@ -1,6 +1,10 @@
-import "dotenv/config";
-import { app } from "./app";
+import 'dotenv/config';
+import { app } from './app';
+import { dbConnection } from './database';
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running => port:${process.env.PORT}`);
+const port = process.env.PORT || 3000;
+
+app.listen(port, async () => {
+    await dbConnection.sync();
+    console.log(`Server is running => port:${port}`);
 });

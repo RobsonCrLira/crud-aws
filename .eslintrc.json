@@ -1,6 +1,6 @@
 {
     "env": {
-        "es2018": true,
+        "es2017": true,
         "node": true
     },
     "extends": [
@@ -25,7 +25,12 @@
         "import"
     ],
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": true
+            }
+        ],
         "no-console": "off",
         "import/no-unresolved": "off",
         "import/prefer-default-export": "off",
