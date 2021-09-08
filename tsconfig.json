@@ -5,19 +5,18 @@
             "ES6"
         ],
         "module": "commonjs",
-        "rootDir": "./src",
-        "baseUrl": "./",
-        "resolveJsonModule": true,
+        // "rootDir": "./src",
+        // "baseUrl": ".",
         "outDir": "./dist",
+        "resolveJsonModule": true,
         "removeComments": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
     },
-    "include": [
-        "src"
-    ],
     "exclude": [
         "node_modules"
     ]

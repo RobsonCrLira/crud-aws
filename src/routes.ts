@@ -1,7 +1,25 @@
 import { Router } from 'express';
+import { createUserController } from './useCase/CreateUser';
+import { deleteUserController } from './useCase/DeleteUser';
+import { listAllUserController } from './useCase/ReadAllUsers';
+import { listUserController } from './useCase/ReadUser';
 
 const routes = Router();
 
-routes.get('/', () => console.log('teste'));
+routes.post('/users', (request, response) => {
+    return createUserController.handle(request, response);
+});
+
+routes.get('/users', (request, response) => {
+    return listAllUserController.handle(request, response);
+});
+
+routes.get('/users/:id', (request, response) => {
+    return listUserController.handle(request, response);
+});
+
+routes.delete('/users/:id', (request, response) => {
+    return deleteUserController.handle(request, response);
+});
 
 export { routes };

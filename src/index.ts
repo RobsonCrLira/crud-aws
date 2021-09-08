@@ -6,5 +6,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port, async () => {
     await dbConnection.sync();
-    console.log(`Server is running => port:${port}`);
+    console.log(`Server is running => http://localhost:${port}/`);
 });
