@@ -7,9 +7,8 @@ class PostgresUsersRepository implements IUserRepository {
     async findByEmail(email: string): Promise<User> {
         const user = await User.findOne({ where: { email } });
 
-        console.log(`user: ${user}`);
         if (!user) {
-            throw new AppError(`User Exists User  ${email} `, 200);
+            throw new AppError(`User Exists email: ${email} `, 200);
         }
 
         return user;
@@ -19,20 +18,20 @@ class PostgresUsersRepository implements IUserRepository {
         const user = await User.findOne({ where: { id } });
 
         if (!user) {
-            throw new AppError(`User Exists User  ${id} `, 200);
+            throw new AppError(`User not Exists ${id} `, 200);
         }
 
         return user;
     }
 
-    async save(user: IUser): Promise<User> {
-        const userExist = await User.findOne({ where: { email: user.email } });
+    async save(data: IUser): Promise<User> {
+        const userExist = await User.findOne({ where: { email: data.email } });
 
         if (userExist) {
             throw new AppError(`User Exists User `, 200);
         }
 
-        const users = await User.create(user);
+        const users = await User.create(data);
         return users;
     }
 
@@ -49,6 +48,16 @@ class PostgresUsersRepository implements IUserRepository {
     async findAll(): Promise<User[]> {
         const user = await User.findAll();
         return user;
+    }
+
+    async update(data: IUser, id: number): Promise<void> {
+        const userExist = await User.findOne({ where: { id } });
+
+        if (!userExist) {
+            throw new AppError(`User not Exists User  ${id} `, 200);
+        }
+
+        await User.update(data, { where: { id } });
     }
 }
 export { PostgresUsersRepository };

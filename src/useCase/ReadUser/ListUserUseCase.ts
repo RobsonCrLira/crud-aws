@@ -6,10 +6,15 @@ class ListUserUseCase {
 
     async execute(id: number) {
         const user = await this.userRepository.findById(id);
-        if (!user) {
-            throw new AppError(`No records found for email: ${id}`);
-        }
-        return user;
+
+        const userResponse = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+        };
+        return userResponse;
     }
 }
 export { ListUserUseCase };

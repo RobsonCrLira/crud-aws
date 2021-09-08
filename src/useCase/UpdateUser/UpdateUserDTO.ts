@@ -1,8 +1,6 @@
-interface IUser {
-    id?: number;
-    name: string;
-    email: string;
+interface IUpdateUserRequestDTO {
+    name?: string;
+    email?: string;
     password?: string;
 }
-
-export { IUser };
+export { IUpdateUserRequestDTO };
