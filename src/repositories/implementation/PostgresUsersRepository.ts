@@ -59,5 +59,15 @@ class PostgresUsersRepository implements IUserRepository {
 
         await User.update(data, { where: { id } });
     }
+
+    async auth(data: IUser): Promise<User> {
+        const user = await User.findOne({ where: { email: data.email } });
+
+        if (!user) {
+            throw new AppError('Email/Password Incorrect !');
+        }
+
+        return user;
+    }
 }
 export { PostgresUsersRepository };
