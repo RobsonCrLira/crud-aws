@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
-import { DataTypes, Model } from 'sequelize';
+import { Model } from 'sequelize-typescript';
+import { DataTypes } from 'sequelize/types';
 import { dbConnection } from '.';
 import { IUser } from './IUser';
 

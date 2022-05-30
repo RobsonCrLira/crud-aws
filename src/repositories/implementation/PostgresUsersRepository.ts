@@ -1,7 +1,7 @@
-import { User } from '../../database/User';
 import { AppError } from '../../errors/AppError';
 import { IUser } from '../../database/IUser';
 import { IUserRepository } from '../IUserRepository';
+import { User } from '../../database/User';
 
 class PostgresUsersRepository implements IUserRepository {
     async findByEmail(email: string): Promise<User> {
